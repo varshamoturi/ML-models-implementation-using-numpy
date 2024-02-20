@@ -8,6 +8,7 @@ This repository contains Python implementations of various machine learning algo
 - **bayes.py**: Contains the implementation of the Naive Bayes classifier and helper functions for data preprocessing.
 - **dtree.py**: Contains the implementations of Decision Tree classes for regression and classification tasks.
 - **rf.py**: Contains the implementations of Random Forest classes for regression and classification tasks.
+- **adaboost.py**: Contains the implementations of the Adaboost algorithm for classification tasks.
 - **gradient_boosting_mse.py**: Contains the implementations of the Gradient Boosting algorithm for regression tasks.
 - **README.md**: This file.
 
