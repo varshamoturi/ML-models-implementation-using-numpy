@@ -1,9 +1,9 @@
 import numpy as np
 from sklearn.utils import resample
 
-from decision_tree import *
+from dtree import *
 
-class RandomForest:
+class RandomForestNP:
     def __init__(self, n_estimators=10, oob_score=False, model_type='regr'):
         self.n_estimators = n_estimators
         self.oob_score = oob_score
@@ -40,11 +40,11 @@ class RandomForest:
             y_filtered = [y[i] for i in range(len(y)) if i not in nan_lst]
             self.oob_score_ = oob_score_func(y_filtered, oob_filtered)
 
-class RandomForestRegressor(RandomForest):
+class RandomForestRegressorNP(RandomForestNP):
     def __init__(self, n_estimators=10, min_samples_leaf=3, 
     max_features=0.3, oob_score=False):
         super().__init__(n_estimators, oob_score=oob_score)
-        self.trees = [RegressionTree(min_samples_leaf=min_samples_leaf, max_features=max_features) for _ in range(n_estimators)]
+        self.trees = [RegressionTreeNP(min_samples_leaf=min_samples_leaf, max_features=max_features) for _ in range(n_estimators)]
 
     def predict(self, X_test) -> np.ndarray:
         """
@@ -76,13 +76,13 @@ class RandomForestRegressor(RandomForest):
         """
         return r2_score(y_test,self.predict(X_test))
 
-class RandomForestClassifier(RandomForest):
+class RandomForestClassifierNP(RandomForestNP):
     def __init__(self, n_estimators=10, min_samples_leaf=3, 
     max_features=0.3, oob_score=False):
         super().__init__(n_estimators, oob_score=oob_score)
         n_estimators = n_estimators
         self.min_samples_leaf = min_samples_leaf
-        self.trees = [ClassifierTree(min_samples_leaf=min_samples_leaf, max_features=max_features) for _ in range(n_estimators)]
+        self.trees = [ClassifierTreeNP(min_samples_leaf=min_samples_leaf, max_features=max_features) for _ in range(n_estimators)]
 
 
     def predict(self, X_test) -> np.ndarray:
