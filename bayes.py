@@ -187,7 +187,7 @@ def vectorize_docs(docs:Sequence, V:dict) -> np.ndarray:
     return D
 
 
-class NaiveBayes621:
+class NaiveBayesNP:
     """
     This object behaves like a sklearn model with fit(X,y) and predict(X) functions.
     Limited to two classes, 0 and 1 in the y target.
