@@ -77,7 +77,7 @@ def find_best_split(X, y, loss, min_samples_leaf):
 
 
     
-class DecisionTree:
+class DecisionTreeNP:
     def __init__(self, min_samples_leaf=1, loss=None):
         self.min_samples_leaf = min_samples_leaf
         self.loss = loss # loss function; either np.var for regression or gini for classification
@@ -132,7 +132,7 @@ class DecisionTree:
 
 
 
-class RegressionTree(DecisionTree):
+class RegressionTreeNP(DecisionTreeNP):
     def __init__(self, min_samples_leaf=1):
         super().__init__(min_samples_leaf, loss=np.var)
 
@@ -148,7 +148,7 @@ class RegressionTree(DecisionTree):
         return LeafNode(y, np.mean(y))
 
 
-class ClassifierTree(DecisionTree):
+class ClassifierTreeNP(DecisionTreeNP):
     def __init__(self, min_samples_leaf=1):
         super().__init__(min_samples_leaf, loss=gini)
 
